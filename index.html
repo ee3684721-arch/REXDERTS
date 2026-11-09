@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REXDERTS - Games and Apps</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#080817;
+  color:white;
+}
+header{
+  padding:22px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#101027;
+  border-bottom:1px solid #292956;
+}
+.logo{font-size:27px;font-weight:900;color:#a78bfa}
+nav a{color:white;text-decoration:none;margin-left:16px}
+.hero{
+  text-align:center;
+  padding:75px 20px 55px;
+  background:radial-gradient(circle,#29205c,#080817 70%);
+}
+.hero h1{font-size:48px;margin-bottom:12px}
+.hero h1 span{color:#a78bfa}
+.hero p{color:#c6c4dd;margin-bottom:25px}
+.search{
+  width:90%;max-width:480px;padding:15px;
+  border:1px solid #7770cb;border-radius:12px;
+  background:#15152d;color:white;font-size:16px;
+}
+main{padding:35px 7%}
+.section-title{font-size:25px;margin-bottom:20px}
+.categories{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}
+.categories button{
+  padding:10px 17px;border:1px solid #51458d;
+  background:#17152f;color:white;border-radius:20px;
+  cursor:pointer;
+}
+.categories button:hover{background:#7045d8}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+}
+.card{
+  background:#15152b;border:1px solid #29294d;
+  border-radius:15px;padding:20px;
+  transition:.2s;
+}
+.card:hover{transform:translateY(-4px);border-color:#9272ff}
+.icon{font-size:38px;margin-bottom:15px}
+.card h3{margin-bottom:9px}
+.card p{color:#b8b6d0;font-size:14px;line-height:1.5;min-height:42px}
+.card a{
+  display:inline-block;margin-top:16px;padding:10px 15px;
+  background:#7045d8;color:white;text-decoration:none;
+  border-radius:9px;font-size:14px;
+}
+footer{
+  text-align:center;padding:30px 15px;
+  color:#9997b8;border-top:1px solid #29294d;margin-top:40px;
+}
+.hidden{display:none}
+@media(max-width:600px){
+ .hero h1{font-size:36px}
+ header{padding:18px 5%}
+ nav a{margin-left:8px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">REXDERTS</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#catalog">Explore</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Welcome to <span>REXDERTS</span></h1>
+  <p>Your destination for discovering games and apps.</p>
+  <input class="search" id="search" type="search"
+  placeholder="Search games and apps..." oninput="filterCards()">
+</section>
+
+<main id="catalog">
+  <h2 class="section-title">Explore the collection</h2>
+  <div class="categories">
+    <button onclick="showCategory('all')">All</button>
+    <button onclick="showCategory('game')">Games</button>
+    <button onclick="showCategory('app')">Apps</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <article class="card" data-type="game">
+      <div class="icon">🎮</div>
+      <h3>Roblox</h3>
+      <p>Explore millions of experiences created by players.</p>
+      <a href="https://www.roblox.com/" target="_blank" rel="noopener">Official website</a>
+    </article>
+
+    <article class="card" data-type="game">
+      <div class="icon">🧱</div>
+      <h3>Minecraft</h3>
+      <p>Explore, build and create in a block-based world.</p>
+      <a href="https://www.minecraft.net/" target="_blank" rel="noopener">Official website</a>
+    </article>
+
+    <article class="card" data-type="game">
+      <div class="icon">🚗</div>
+      <h3>Asphalt Legends</h3>
+      <p>Discover the official racing game.</p>
+      <a href="https://www.gameloft.com/" target="_blank" rel="noopener">Official website</a>
+    </article>
+
+    <article class="card" data-type="app">
+      <div class="icon">🎨</div>
+      <h3>Canva</h3>
+      <p>Create designs, posters and presentations.</p>
+      <a href="https://www.canva.com/" target="_blank" rel="noopener">Official website</a>
+    </article>
+
+    <article class="card" data-type="app">
+      <div class="icon">🎬</div>
+      <h3>CapCut</h3>
+      <p>Explore video editing tools and information.</p>
+      <a href="https://www.capcut.com/" target="_blank" rel="noopener">Official website</a>
+    </article>
+
+    <article class="card" data-type="app">
+      <div class="icon">🎵</div>
+      <h3>Spotify</h3>
+      <p>Discover music and audio streaming.</p>
+      <a href="https://www.spotify.com/" target="_blank" rel="noopener">Official website</a>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <h3>REXDERTS Games and Apps</h3>
+  <p>Discover. Explore. Play.</p>
+  <p>© 2026 REXDERTS</p>
+</footer>
+
+<script>
+function filterCards(){
+  const q=document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    card.classList.toggle('hidden',
+      !card.innerText.toLowerCase().includes(q));
+  });
+}
+function showCategory(type){
+  document.querySelectorAll('.card').forEach(card=>{
+    card.classList.toggle('hidden',
+      type!=='all' && card.dataset.type!==type);
+  });
+  document.getElementById('search').value='';
+}
+</script>
+</body>
+</html>
