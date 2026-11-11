@@ -96,18 +96,207 @@ footer{
   <h2 class="section-title">⭐ REXDERTS Featured Games</h2>
   <div class="grid">
 
-    <article class="card">
-      <article class="card">
+   
+<article class="card poppy-card">
+
+  <!-- GAME COVER IMAGE -->
+  <img src="poppy-chapter-5.jpg"
+       alt="Poppy Playtime Chapter 5"
+       class="game-cover">
+
   <div class="icon">🧸</div>
+
   <h3>Poppy Playtime Chapter 5</h3>
-  <p>Discover the latest chapter and its official release information.</p>
+
+  <p>
+    Explore the world of Poppy Playtime
+    and discover more about the game.
+  </p>
+
+  <div class="poppy-info">
+
+    <h2>🎮 Game Information</h2>
+
+    <p><strong>Game:</strong> Poppy Playtime Chapter 5</p>
+    <p><strong>Developer:</strong> Mob Entertainment</p>
+    <p><strong>Genre:</strong> Horror, Puzzle, Adventure</p>
+    <p><strong>Game Mode:</strong> Single Player</p>
+    <p><strong>Category:</strong> Horror Game</p>
+
+    <p><strong>Website:</strong>
+      <a href="https://www.mobentertainment.com/"
+         target="_blank" rel="noopener">
+         Official Publisher
+      </a>
+    </p>
+
+  </div>
+
+  <div class="poppy-about">
+
+    <h2>📖 About the Game</h2>
+
+    <p>
+      Poppy Playtime is a horror puzzle adventure
+      series developed by Mob Entertainment.
+      Players explore mysterious environments,
+      solve puzzles and uncover secrets.
+    </p>
+
+    <h2>🕹️ Gameplay</h2>
+
+    <ul>
+      <li>Explore mysterious locations.</li>
+      <li>Solve different puzzles.</li>
+      <li>Discover hidden secrets.</li>
+      <li>Experience horror adventures.</li>
+      <li>Learn about the game's characters.</li>
+    </ul>
+
+    <h2>⭐ Main Features</h2>
+
+    <ul>
+      <li>Horror adventure experience</li>
+      <li>Puzzle-solving gameplay</li>
+      <li>Mysterious environments</li>
+      <li>Story exploration</li>
+      <li>Single-player experience</li>
+    </ul>
+
+  </div>
+
+  <div class="poppy-rating">
+
+    <h2>⭐ Rate This Game</h2>
+
+    <p>How would you rate Poppy Playtime Chapter 5?</p>
+
+    <div class="rating-stars">
+      <button type="button" data-rating="1">★</button>
+      <button type="button" data-rating="2">★</button>
+      <button type="button" data-rating="3">★</button>
+      <button type="button" data-rating="4">★</button>
+      <button type="button" data-rating="5">★</button>
+    </div>
+
+    <p id="poppy-rating-result">Select your rating.</p>
+
+  </div>
 
   <a href="https://www.mobentertainment.com/"
-     target="_blank" rel="noopener">
-     Official website
+     target="_blank"
+     rel="noopener"
+     class="download-btn">
+     Visit Official Publisher
   </a>
-      </article>
-</a>https://www.mediafire.com/file/qdointm1z4hqr83/Poppy-Playtime-Chapter-5-v1.0.17-full-apkvision.apk/file
+
+</article>
+
+<style>
+.poppy-card {
+  text-align: left;
+}
+
+.game-cover {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  margin: 12px 0;
+}
+
+.poppy-info,
+.poppy-about,
+.poppy-rating {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(120, 80, 255, 0.10);
+}
+
+.poppy-card h2 {
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.poppy-card p {
+  line-height: 1.6;
+}
+
+.poppy-card ul {
+  padding-left: 22px;
+  line-height: 1.9;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rating-stars button {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.rating-stars button.active {
+  color: #ffd43b;
+}
+
+.poppy-rating-result {
+  font-weight: bold;
+  margin-top: 12px;
+}
+</style>
+
+<script>
+const poppyStars = document.querySelectorAll(
+  '.poppy-card .rating-stars button'
+);
+
+const poppyResult = document.getElementById(
+  'poppy-rating-result'
+);
+
+poppyStars.forEach((star) => {
+  star.addEventListener('click', () => {
+    const rating = Number(star.dataset.rating);
+
+    poppyStars.forEach((item) => {
+      item.classList.toggle(
+        'active',
+        Number(item.dataset.rating) <= rating
+      );
+    });
+
+    poppyResult.textContent =
+      'Your rating: ' + rating + ' / 5 stars';
+
+    localStorage.setItem('poppyChapter5Rating', rating);
+  });
+});
+
+const savedRating = Number(
+  localStorage.getItem('poppyChapter5Rating')
+);
+
+if (savedRating >= 1 && savedRating <= 5) {
+  poppyStars.forEach((star) => {
+    star.classList.toggle(
+      'active',
+      Number(star.dataset.rating) <= savedRating
+    );
+  });
+
+  poppyResult.textContent =
+    'Your rating: ' + savedRating + ' / 5 stars';
+}
+  </script>
+    
    
     </a>
     </article>
